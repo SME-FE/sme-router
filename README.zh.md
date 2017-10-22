@@ -7,7 +7,7 @@
 
 ## 文档
 
-- [文档](https://github.com/SME-FE/sme-router/blob/master/docs.document.md)
+- [文档](https://github.com/SME-FE/sme-router/blob/master/docs/document.md)
 - [API](https://github.com/SME-FE/sme-router/blob/master/docs/api.md)
 
 ## Get Start
@@ -17,7 +17,7 @@
 ```bash
 npm i --save sme-router
 ```
-
+·
 ### 用法
 
 index.html

@@ -7,7 +7,7 @@
 
 ## Documentation
 
-- [Doc](https://github.com/SME-FE/sme-router/blob/master/docs.document.md)
+- [Doc](https://github.com/SME-FE/sme-router/blob/master/docs/document.md)
 - [API](https://github.com/SME-FE/sme-router/blob/master/docs/api.md)
 
 ## Get Start

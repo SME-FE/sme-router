@@ -27,13 +27,26 @@ module.exports = {
         use: [
           'file-loader'
         ]
+      },
+      {
+        test: /\.pug$/,
+        loader: 'pug-loader?'
+      },
+      {
+        test: /\.hbs$/,
+        use: {
+          loader: 'handlebars-loader'
+        }
+      },
+      {
+        test: /\.html$/,
+        use: [
+          'html-loader'
+        ],
+        include: [
+          path.resolve(__dirname, '../example/pages/autumn')
+        ]
       }
-      // {
-      //   test: /\.html$/,
-      //   use: [
-      //     'html-loader'
-      //   ]
-      // }
     ]
   },
   output: {

@@ -1,0 +1,21 @@
+<div class="content-container">
+  <h2 class="content-header">秋</h2>
+  <div class="sub-title">
+    <div class="route">/autumn/:year</div>
+    <div class="desc">这个页面使用 <code>html</code> 构建 🙊</div>
+  </div>
+  <section>
+    <div>============================</div>
+    <div>params: ${params}</div>
+    <div>query: ${query}</div>
+    <div>body: ${body}</div>
+    <div>============================</div>
+  </section>
+  <section class='example-box'>
+    <div class='example-head'># example</div>
+    <div>Current Day: <code>${body.parsedByMiddleware}</code></div>
+    <div class='mes'>
+        Default Mes: I am hwen 😀
+    </div>
+  </section>
+</div>

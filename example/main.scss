@@ -26,6 +26,12 @@ html, body {
     background-color: white;
     border-left: 1px solid $gray;
 
+    .site-nav {
+      .menu-bar {
+        display: none;
+      }
+    }
+
     .header {
       text-align: center;
       background-color: $purple;

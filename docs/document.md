@@ -61,7 +61,7 @@ router.route('/index', (req, res, next) => {
 })
 
 router.route('*', (req, res, next) => {
-  res.redirect('/index)
+  res.redirect('/index')
 })
 
 router.go('/other') // will be redirected to /index

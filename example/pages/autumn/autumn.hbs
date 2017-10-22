@@ -1,0 +1,25 @@
+<div class="content-container">
+  <h2 class="content-header">秋</h2>
+  <div class="sub-title">
+    <div class="route">/autumn/:year</div>
+    <div class="desc">这个页面使用 <code>handlebars</code> 构建 👨</div>
+  </div>
+  <section>
+    <div>============================</div>
+    <div>params: {{ paramsStr }}</div>
+    <div>query: {{ queryStr }}</div>
+    <div>body: {{ bodyStr }}</div>
+    <div>============================</div>
+  </section>
+  <section class='example-box'>
+    <div class='example-head'># example</div>
+    <div>Current Day: <code>{{ body.parsedByMiddleware }}</code></div>
+    <div class='mes'>
+      {{#if body.mes}}
+        {{ body.mes }}
+      {{else}}
+        Default Mes: I am hwen 😀
+      {{/if}}
+    </div>
+  </section>
+</div>

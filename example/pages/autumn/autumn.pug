@@ -1,0 +1,24 @@
+.content-container
+  h2.content-header 秋
+  .sub-title
+    .route /autumn/:year
+    .desc 
+      | 这个页面使用
+      code pug
+      | 构建 🐶
+  section
+    div ============================
+    div params: #{JSON.stringify(params)}
+    div query: #{JSON.stringify(query)}
+    div body: #{JSON.stringify(body)}
+    div ============================
+  section.example-box
+    .example-head | # example
+    div
+      | Current Day: 
+      code #{body.parsedByMiddleware}
+    .mes
+      if body.mes
+        | #{body.mes}
+      else
+        | Default Mes: I am hwen 😀
