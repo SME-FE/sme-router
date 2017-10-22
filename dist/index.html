@@ -11,13 +11,18 @@
             <h3>sme-router</h3>
             <em>A lightweight router lib that implement express route style</em>
           </div>
-          <ul>
-            <li onclick="router.go('/spring/1945?month=10&day=24', {mes: 'hallo world'})">春<em>(spring)</em></li>
-            <li onclick="router.go('/summer/1914?month=07&day=30')">霞<em>(summer)</em></li>
-            <li onclick="router.go('/autumn/1918?month=11&day=12')">秋<em>(autumn)</em></li>
-            <li onclick="router.go('/winter/1937?month=07&day=07')">霜<em>(winter)</em></li>
-            <li onclick="router.go('/about')">？<em>(about)</em></li>
-          </ul>
+          <div class="site-nav">
+            <div class="menu-bar">
+              Menu
+            </div>
+            <ul class="menu-list">
+              <li onclick="router.go('/spring/1945?month=10&day=24', {mes: 'hallo world'})">春<em>(spring)</em></li>
+              <li onclick="router.go('/summer/1914?month=07&day=30')">霞<em>(summer)</em></li>
+              <li onclick="router.go('/autumn/1918?month=11&day=12')">秋<em>(autumn)</em></li>
+              <li onclick="router.go('/winter/1937?month=07&day=07')">霜<em>(winter)</em></li>
+              <li onclick="router.go('/about')">？<em>(about)</em></li>
+            </ul>
+          </div>
       </div>
       <div class="right">
       </div>
@@ -34,7 +39,7 @@
   
   <!-- htmlWebpackPlugin 对象里究竟有什么？看下面的代码 -->
   <!-- <script type="text/javascript">
-    var htmlPlugin = '{"files":{"publicPath":"","chunks":{"index":{"size":59730,"entry":"example.js","hash":"919a17b0a296eab5fb7c","css":[]}},"js":["example.js"],"css":[]},"options":{"template":"C:\\project\\mk\\sme-router\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\project\\mk\\sme-router\\example\\index.html","filename":"index.html","hash":false,"inject":false,"compile":true,"favicon":false,"minify":false,"cache":true,"showErrors":true,"chunks":"all","excludeChunks":[],"title":"sme-router exmaple","xhtml":false}}'
+    var htmlPlugin = '{"files":{"publicPath":"","chunks":{"index":{"size":181259,"entry":"example.js","hash":"5ae78b45bbdd4fef886c","css":[]}},"js":["example.js"],"css":[]},"options":{"template":"C:\\project\\mk\\sme-router\\node_modules\\_html-webpack-plugin@2.30.1@html-webpack-plugin\\lib\\loader.js!C:\\project\\mk\\sme-router\\example\\index.html","filename":"index.html","hash":false,"inject":false,"compile":true,"favicon":false,"minify":false,"cache":true,"showErrors":true,"chunks":"all","excludeChunks":[],"title":"sme-router exmaple","xhtml":false}}'
   </script> -->
 </body>
 </html>

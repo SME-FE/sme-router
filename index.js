@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -86,138 +86,84 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _routeMatcher = __webpack_require__(1);
+var _cacheBody2 = __webpack_require__(6);
 
-var _routeMatcher2 = _interopRequireDefault(_routeMatcher);
-
-var _Html5History = __webpack_require__(4);
-
-var _Html5History2 = _interopRequireDefault(_Html5History);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _utils = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Router = function () {
-  function Router(mount) {
-    _classCallCheck(this, Router);
+var History = function () {
+  /**
+   * Creates an instance of History.
+   * @param {Object} options 
+   *             
+   * @memberof History
+   */
+  function History(options) {
+    _classCallCheck(this, History);
 
-    this._mount = document.getElementById(mount);
-    this._subRouteView = '<div id="sub-route-view"></div>';
-    this._subMount = null;
-    this._isSubRoute = false;
-
-    this._cache = {};
-
-    this.routeIdx = 0;
-
-    if (!this._mount) {
-      throw new Error('Can not get mount point...');
-    }
-
-    this._matcher = new _routeMatcher2.default();
-
-    this.iterator = false;
-
-    this.history = new _Html5History2.default({
-      recoginizer: this._recoginizer,
-      matcher: this._matcher
-    });
+    this.matcher = options.matcher;
+    this._matchedCount = 0;
   }
 
-  /**
-   * 注册渲染（挂载）的位置
-   * 
-   * @memberof Router
-   */
+  _createClass(History, [{
+    key: '_fireHandlers',
+    value: function _fireHandlers(matchedRoutes, body) {
+      for (var i = 0; i < matchedRoutes.length; i++) {
+        var item = matchedRoutes[i];
+        var cache = this._getCache(item);
 
+        var request = {
+          body: body || cache,
+          query: item.query,
+          params: item.params
+        };
 
-  _createClass(Router, [{
-    key: 'render',
-    value: function render(dom) {
-      if (this._isSubRoute) {
-        this._subMount.innerHTML = dom;
-        this._isSubRoute = false;
-      } else {
-        this._mount.innerHTML = dom;
+        (0, _utils.def)(request, 'route', item.path);
+        (0, _utils.def)(request, 'url', item.url);
+
+        if (!body && cache) request._id = item._id;
+
+        item.handler(request);
+
+        this._cacheBody(body, item);
       }
     }
   }, {
-    key: 'next',
-    value: function next(dom) {
-      this._mount.innerHTML = dom;
-      this._isSubRoute = true;
-      this._subMount = document.querySelector('#sub-route-view');
+    key: '_getCache',
+    value: function _getCache(routeConfig) {
+      return (0, _cacheBody2.getCache)(routeConfig._id);
     }
   }, {
-    key: 'subRoute',
-    value: function subRoute() {
-      return this._subRouteView;
+    key: '_cacheBody',
+    value: function _cacheBody(state, routeConfig) {
+      if (state) {
+        (0, _cacheBody2.setCache)(routeConfig._id, state);
+      }
     }
-
-    /**
-     * 注册路由
-     * 
-     * @param {any} path 
-     * @param {any} middleware 
-     * @memberof Router
-     */
-
   }, {
-    key: 'route',
-    value: function route(path, middleware) {
-      var self = this;
-      // this._recoginizer.add([{
-      //   path: path,
-      //   handler: function(request) {
-      //     middleware(request, self, self.iterator)
-      //   } 
-      // }])
-
-      this._matcher.add(path, function (request) {
-        middleware(request, self, self.next.bind(self));
-      });
+    key: 'getMatchedCount',
+    value: function getMatchedCount() {
+      return this._matchedCount;
     }
-
-    /**
-     * 
-     * 
-     * @param {string} url 
-     * @param {Object} body 
-     * @memberof Router
-     */
-
   }, {
     key: 'go',
-    value: function go(url, body) {
-      this.history.go(url, body);
-    }
-
-    /**
-     * 重定向到某一路由
-     * 
-     * @memberof Router
-     */
-
+    value: function go(url, body) {}
   }, {
     key: 'redirect',
-    value: function redirect() {}
-
-    /**
-     * 回跳到历史
-     * 
-     * @memberof Router
-     */
-
+    value: function redirect(url, body) {}
   }, {
     key: 'back',
     value: function back() {}
+  }, {
+    key: 'stop',
+    value: function stop() {}
   }]);
 
-  return Router;
+  return History;
 }();
 
-exports.default = Router;
+exports.default = History;
 
 /***/ }),
 /* 1 */
@@ -232,11 +178,205 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _pathToRegexp = __webpack_require__(2);
+var _routeMatcher = __webpack_require__(2);
+
+var _routeMatcher2 = _interopRequireDefault(_routeMatcher);
+
+var _Html5History = __webpack_require__(5);
+
+var _Html5History2 = _interopRequireDefault(_Html5History);
+
+var _HashHistory = __webpack_require__(8);
+
+var _HashHistory2 = _interopRequireDefault(_HashHistory);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Router = function () {
+  function Router(mount) {
+    var mode = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'hash';
+
+    _classCallCheck(this, Router);
+
+    this._mount = document.getElementById(mount);
+    this._subRouteView = '<div id="__sub-route-view"></div>';
+    this._subMount = null;
+    this._isPassing = false;
+
+    this._cache = {};
+    this._middlewares = [];
+
+    if (!this._mount) {
+      throw new Error('Can not get mount point document.getElementById(#' + mount + ')...');
+    }
+
+    this._matcher = new _routeMatcher2.default();
+
+    this.iterator = false;
+    console.log('router mode is ' + mode);
+    this._history = mode === 'hash' ? new _HashHistory2.default({ matcher: this._matcher }) : new _Html5History2.default({ matcher: this._matcher });
+  }
+
+  /**
+   * render to mount point
+   * @param {string} dom 
+   * @memberof Router
+   */
+
+
+  _createClass(Router, [{
+    key: 'render',
+    value: function render(dom) {
+      if (this._isPassing) {
+        this._subMount.innerHTML = dom;
+      } else {
+        this._mount.innerHTML = dom;
+      }
+    }
+
+    /**
+     * render parent route and passing to next router
+     * @param {string} dom 
+     * @memberof Router
+     */
+
+  }, {
+    key: 'next',
+    value: function next(dom) {
+      this._mount.innerHTML = dom;
+      // only passing to the next router while matched router more then 1
+      this._isPassing = this._history.getMatchedCount() > 1;
+      this._subMount = document.querySelector('#__sub-route-view');
+    }
+
+    /**
+     * 
+     * @returns {string} subroute
+     * @memberof Router
+     */
+
+  }, {
+    key: 'subRoute',
+    value: function subRoute() {
+      return this._subRouteView;
+    }
+
+    /**
+     * add middleware to router instance
+     * 
+     * @param {Function} middleware 
+     * @memberof Router
+     */
+
+  }, {
+    key: 'use',
+    value: function use(middleware) {
+      this._middlewares.push(middleware);
+    }
+
+    /**
+     * 注册路由
+     * 
+     * @param {any} path 
+     * @param {any} middleware 
+     * @memberof Router
+     */
+
+  }, {
+    key: 'route',
+    value: function route(path, middleware) {
+      var _this = this;
+
+      this._matcher.add(path, function (request) {
+        // run configed middlewares only when not '*' path and not get request from cache
+        if (path !== '*' && !request._id) {
+          for (var i = 0; i < _this._middlewares.length; i++) {
+            _this._middlewares[i](request);
+          }
+        }
+        middleware(request, _this, _this.next.bind(_this));
+      });
+    }
+
+    /**
+     * go to a url
+     * 
+     * @param {string} url 
+     * @param {Object} body 
+     * @memberof Router
+     */
+
+  }, {
+    key: 'go',
+    value: function go(url, body) {
+      this._isPassing = false;
+      this._history.go(url, body);
+    }
+
+    /**
+     * redirect to url
+     * 
+     * @memberof Router
+     */
+
+  }, {
+    key: 'redirect',
+    value: function redirect(url, body) {
+      this._isPassing = false;
+      this._history.redirect(url, body);
+    }
+
+    /**
+     * back to history
+     * 
+     * @memberof Router
+     */
+
+  }, {
+    key: 'back',
+    value: function back() {
+      this._isPassing = false;
+      this._history.back();
+    }
+
+    /**
+     * remove all listeners
+     * 
+     * @memberof Router
+     */
+
+  }, {
+    key: 'stop',
+    value: function stop() {
+      this._history.stop();
+    }
+  }]);
+
+  return Router;
+}();
+
+exports.default = Router;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _pathToRegexp = __webpack_require__(3);
 
 var _pathToRegexp2 = _interopRequireDefault(_pathToRegexp);
 
-var _queryParser = __webpack_require__(3);
+var _queryParser = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -247,10 +387,10 @@ var RouteMatcher = function () {
     _classCallCheck(this, RouteMatcher);
 
     this._routes = [];
+    this._id = 0;
   }
 
   /**
-   * 
    * 
    * @param {any} url 
    * @returns {Object} return matched routes
@@ -264,6 +404,7 @@ var RouteMatcher = function () {
       var matchedRoutes = [];
       var queryStr = '';
       var idx = url.indexOf('?');
+      var notMatched = true;
 
       if (idx > -1) {
         queryStr = url.substr(idx);
@@ -275,8 +416,14 @@ var RouteMatcher = function () {
         var result = route.reg.exec(url);
 
         if (result) {
+          if (route.path !== '*') notMatched = false;
+          // after matched a path then ignore '*' path
+          if (!notMatched && route.path === '*') continue;
+
           matchedRoutes.push({
+            _id: route._id,
             path: route.path,
+            url: url + queryStr,
             params: this._getParams(route.params, result),
             query: (0, _queryParser.parseQuery)(queryStr),
             handler: route.handler
@@ -290,25 +437,27 @@ var RouteMatcher = function () {
     /**
      * 
      * add new routeConfig
-     * @param {Object} routeConfig
-     *                  - {string} path 
-     *                  - {Function} handler 
+     * @param {string} path
+     * @param {Function} handler
      * @memberof RouteMatcher
      */
 
   }, {
     key: 'add',
     value: function add(path, handler) {
-      this._routes.push(this._toReg({
+      var complied = this._toReg({
         path: path,
         handler: handler
-      }));
+      });
+      // generate unique id by register order
+      complied._id = ++this._id;
+      this._routes.push(complied);
     }
   }, {
     key: '_toReg',
     value: function _toReg(routeConfig) {
       routeConfig.params = [];
-      routeConfig.reg = (0, _pathToRegexp2.default)(routeConfig.path, routeConfig.params, { end: false });
+      routeConfig.reg = routeConfig.path === '*' ? /[\w\W]*/i : (0, _pathToRegexp2.default)(routeConfig.path, routeConfig.params, { end: false });
 
       return routeConfig;
     }
@@ -333,7 +482,7 @@ var RouteMatcher = function () {
 exports.default = RouteMatcher;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports) {
 
 /**
@@ -709,7 +858,7 @@ function pathToRegexp (path, keys, options) {
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -722,6 +871,13 @@ Object.defineProperty(exports, "__esModule", {
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 exports.parseQuery = parseQuery;
+
+/**
+ * 
+ * @export
+ * @param {string} queryStr 
+ * @returns {Object} query - return a parsed query object 
+ */
 function parseQuery(queryStr) {
   var query = {};
   queryStr = queryStr.trim().replace(/^(\?|#|&)/, '');
@@ -747,7 +903,7 @@ function parseQuery(queryStr) {
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -759,11 +915,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _utils = __webpack_require__(5);
+var _History2 = __webpack_require__(0);
+
+var _History3 = _interopRequireDefault(_History2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Html5History = function () {
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Html5History = function (_History) {
+  _inherits(Html5History, _History);
+
   /**
    * Creates an instance of Html5History.
    * @param {Object} options 
@@ -773,53 +939,67 @@ var Html5History = function () {
   function Html5History(options) {
     _classCallCheck(this, Html5History);
 
-    this.matcher = options.matcher;
-    this.onRouteMatched = options.onRouteMatched;
+    var _this = _possibleConstructorReturn(this, (Html5History.__proto__ || Object.getPrototypeOf(Html5History)).call(this, options));
 
-    window.addEventListener('load', this.listen.bind(this));
-    window.addEventListener('popstate', this.listen.bind(this));
+    _this._init();
+    window.addEventListener('load', _this._listen);
+    window.addEventListener('popstate', _this._listen);
+    return _this;
   }
 
   _createClass(Html5History, [{
-    key: 'listen',
-    value: function listen(event) {
-      var path = '' + location.pathname + location.hash + location.search;
+    key: '_init',
+    value: function _init() {
+      var _this2 = this;
 
-      var matchedRoutes = this.matcher.match(path);
-      for (var i = 0; i < matchedRoutes.length; i++) {
-        var item = matchedRoutes[i];
-        item.handler({
-          body: event.state,
-          query: item.query,
-          params: item.params
-        });
-      }
+      // bind this._listen with this
+      this._listen = function (event) {
+        var path = '' + location.pathname + location.search;
+        var matchedRoutes = _this2.matcher.match(path);
+        _this2._matchedCount = matchedRoutes.length;
+        _this2._fireHandlers(matchedRoutes, event.state);
+      };
+    }
+  }, {
+    key: '_routeTo',
+    value: function _routeTo(url, body) {
+      var matchedRoutes = this.matcher.match(url);
+      this._matchedCount = matchedRoutes.length;
+
+      this._fireHandlers(matchedRoutes, body);
     }
   }, {
     key: 'go',
     value: function go(url, body) {
-      // const preState = location.url
       history.pushState(body, '', url);
-      var matchedRoutes = this.matcher.match(url);
-
-      for (var i = 0; i < matchedRoutes.length; i++) {
-        var item = matchedRoutes[i];
-        item.handler({
-          body: body,
-          query: item.query,
-          params: item.params
-        });
-      }
+      this._routeTo(url, body);
+    }
+  }, {
+    key: 'redirect',
+    value: function redirect(url, body) {
+      history.replaceState(body, '', url);
+      this._routeTo(url, body);
+    }
+  }, {
+    key: 'back',
+    value: function back() {
+      history.go(-1);
+    }
+  }, {
+    key: 'stop',
+    value: function stop() {
+      window.removeEventListener('load', this._listen);
+      window.removeEventListener('popstate', this._listen);
     }
   }]);
 
   return Html5History;
-}();
+}(_History3.default);
 
 exports.default = Html5History;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -828,13 +1008,155 @@ exports.default = Html5History;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getType = getType;
-exports.stateToPath = stateToPath;
-function getType(source) {
-  return Object.prototype.toString.call(source).slice(8, -1);
+exports.setCache = setCache;
+exports.getCache = getCache;
+
+var session = sessionStorage;
+var prefix = 'smer';
+
+/**
+ * cache data to sessionStorage
+ * @export
+ * @param {string} id 
+ * @param {Object} body 
+ */
+function setCache(id, body) {
+  if (!body) return;
+  session.setItem('' + prefix + id, JSON.stringify(body));
 }
 
-function stateToPath(baseUrl, info) {}
+/**
+ * 
+ * get cache data from sessionStorage
+ * @export
+ * @param {string} id 
+ * @returns {Object} cache 
+ */
+function getCache(id) {
+  try {
+    var cache = session.getItem('' + prefix + id);
+    return cache ? JSON.parse(cache) : null;
+  } catch (err) {
+    throw new Error('parse body err');
+  }
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.def = def;
+function def(obj, key, value) {
+  Object.defineProperty(obj, key, {
+    writable: false,
+    enumerable: true,
+    value: value
+  });
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _History2 = __webpack_require__(0);
+
+var _History3 = _interopRequireDefault(_History2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HashHistory = function (_History) {
+  _inherits(HashHistory, _History);
+
+  /**
+   * Creates an instance of HashHistory.
+   * @param {Object} options 
+   *             
+   * @memberof HashHistory
+   */
+  function HashHistory(options) {
+    _classCallCheck(this, HashHistory);
+
+    var _this = _possibleConstructorReturn(this, (HashHistory.__proto__ || Object.getPrototypeOf(HashHistory)).call(this, options));
+
+    _this._cache = {};
+    _this._init();
+    window.addEventListener('load', _this._listen);
+    window.addEventListener('hashchange', _this._listen);
+    return _this;
+  }
+
+  _createClass(HashHistory, [{
+    key: '_getHash',
+    value: function _getHash() {
+      return location.hash.slice(1);
+    }
+  }, {
+    key: '_init',
+    value: function _init() {
+      var _this2 = this;
+
+      // bind this._listen with this
+      this._listen = function (event) {
+        var path = _this2._getHash();
+        var matchedRoutes = _this2.matcher.match(path);
+        _this2._matchedCount = matchedRoutes.length;
+        _this2._fireHandlers(matchedRoutes, _this2._cache[path]);
+      };
+    }
+  }, {
+    key: 'go',
+    value: function go(url, body) {
+      this._cache[url] = body;
+      location.hash = '' + url;
+    }
+  }, {
+    key: 'redirect',
+    value: function redirect(url, body) {
+      var href = location.href;
+      var index = href.indexOf('#');
+      url = index > 0 ? href.slice(0, index) + '#' + url : href.slice(0, 0) + '#' + url;
+
+      this._cache[url] = body;
+      location.replace(url);
+    }
+  }, {
+    key: 'back',
+    value: function back() {
+      history.go(-1);
+    }
+  }, {
+    key: 'stop',
+    value: function stop() {
+      window.removeEventListener('load', this._listen);
+      window.removeEventListener('hashchange', this._listen);
+    }
+  }]);
+
+  return HashHistory;
+}(_History3.default);
+
+exports.default = HashHistory;
 
 /***/ })
 /******/ ]);
