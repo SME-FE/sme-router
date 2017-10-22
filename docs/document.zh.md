@@ -15,7 +15,7 @@ PS. API 列表在 [这里](https://github.com/SME-FE/sme-router/blob/master/docs
 
 ### 基本
 
-[#live demo]() [#source code]()
+[#live demo](https://sme-fe.github.io/sme-router/#/spring/1945?month=10&day=24) [#source code](https://github.com/SME-FE/sme-router/blob/master/example/pages/spring/index.js)
 
 SME Router 是仿照 express 的风格编写的，前端路由库。所以 api 跟 express 有点类似。
 
@@ -42,7 +42,7 @@ router.go('/user/123?name=hwen', { mes: 'hallo world'})
 
 ### 模板
 
-[#live demo]() [#source code]()
+[#live demo](https://sme-fe.github.io/sme-router/#/autumn/1918?month=11&day=12) [#source code](https://github.com/SME-FE/sme-router/blob/master/example/pages/autumn/index.js)
 
 你可以使用任何 webpack 支持的 [template-loader](https://doc.webpack-china.org/loaders/#-templating-),因为 `res.render` 只是简单地插入字符串
 
@@ -110,7 +110,7 @@ export default function autumn (req, res, next) {
 
 ### 重定向
 
-[#live demo]() [#source code]()
+[#live demo](https://sme-fe.github.io/sme-router/#/spring/1945?month=10&day=24) [#source code](https://github.com/SME-FE/sme-router/blob/master/example/index.js#L19)
 
 重定向需要用到 `router.route('*')`
 
@@ -132,7 +132,7 @@ router.go('/other') // will be redirected to /index
 
 ### 中间件
 
-[#live demo]() [#source code]()
+[#live demo](https://sme-fe.github.io/sme-router/#/spring/1945?month=10&day=24) [#source code](https://github.com/SME-FE/sme-router/blob/master/example/index.js#L24)
 
 中间件添加使用 `router.use`，跟路由一样，注册的顺序也是很重要的。中间件会在每个匹配路由的 `handler` 执行前，先执行一遍
 
@@ -163,7 +163,7 @@ router.go('/user/Leo', { count: 1 })
 
 ### 二级路由
 
-[#live demo]() [#source code]()
+[#live demo](https://sme-fe.github.io/sme-router/#/summer/1914?month=07&day=30) [#source code](https://github.com/SME-FE/sme-router/blob/master/example/pages/summer/index.js#L5)
 
 二级路由需要用到 `next()` 方法传递下去，以及 `res.subRoute()` 生成二级页面渲染的节点
 
@@ -187,5 +187,3 @@ router.route('/main/:content', (req, res, next) => {
 
 router.go('/main/sample')
 ```
-
-

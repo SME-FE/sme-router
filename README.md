@@ -63,7 +63,7 @@ router.route('*', (req, res, next) => {
 
 ## Live demo
 
-[click me to see the demo]()
+[click me to see the demo](https://sme-fe.github.io/sme-router/)
 
 ## Running Example 
 

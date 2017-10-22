@@ -15,7 +15,7 @@ By the way, you can check the api in [API List](https://github.com/SME-FE/sme-ro
 
 ### Basic
 
-[#live demo]() [#source code]()
+[#live demo](https://sme-fe.github.io/sme-router/) [#source code](https://github.com/SME-FE/sme-router/blob/master/example/pages/spring/index.js)
 
 SME Router is written with express style, api look like express.
 
@@ -42,7 +42,7 @@ router.go('/user/123?name=hwen', { mes: 'hallo world'})
 
 ### Template
 
-[#live demo]() [#source code]()
+[#live demo](https://sme-fe.github.io/sme-router/#/autumn/1918?month=11&day=12) [#source code](https://github.com/SME-FE/sme-router/blob/master/example/pages/autumn/index.js)
 
 In fact you can use any [template-loader](https://webpack.js.org/loaders/#templating) that webpack support, cause `res.render` just simply insert the string
 
@@ -109,7 +109,7 @@ export default function autumn (req, res, next) {
 
 ### Redirect
 
-[#live demo]() [#source code]()
+[#live demo](https://sme-fe.github.io/sme-router) [#source code](https://github.com/SME-FE/sme-router/blob/master/example/index.js#L19)
 
 You should use `router.route('*')` to redirect unmatch url
 
@@ -131,7 +131,7 @@ router.go('/other') // will be redirected to /index
 
 ### Middleware
 
-[#live demo]() [#source code]()
+[#live demo](https://sme-fe.github.io/sme-router/#/spring/1945?month=10&day=24) [#source code](https://github.com/SME-FE/sme-router/blob/master/example/index.js#L24)
 
 You can add middleware to the router. Middlwares will be called in order before executing each route handler. It's useful to parse request object.
 
@@ -162,7 +162,7 @@ router.go('/user/Leo', { count: 1 })
 
 ### Nested-routes
 
-[#live demo]() [#source code]()
+[#live demo](https://sme-fe.github.io/sme-router/#/summer/1914?month=07&day=30) [#source code](https://github.com/SME-FE/sme-router/blob/master/example/pages/summer/index.js)
 
 Nested Route by calling `next()` and `res.subRoute()`
 
@@ -186,5 +186,3 @@ router.route('/main/:content', (req, res, next) => {
 
 router.go('/main/sample')
 ```
-
-

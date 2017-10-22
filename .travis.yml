@@ -12,10 +12,11 @@ install:
 branches:
   only: master
 script:
-  # - karma start
+  - karma start
   - npm run lint
   - npm run build:example
 after_script:
+  - npm install coveralls@2.10.0 && cat ./test/coverage/report-lcovonly.txt | coveralls
   - cd dist
   - git init
   - git config user.name "hwen"
