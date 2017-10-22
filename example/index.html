@@ -35,7 +35,7 @@
   </div>
 
   <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-  <script type="text/javascript" src="/<%=htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+  <script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
   <% } %>
   <!-- htmlWebpackPlugin 对象里究竟有什么？看下面的代码 -->
   <!-- <script type="text/javascript">
