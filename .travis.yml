@@ -12,7 +12,7 @@ install:
 branches:
   only: master
 script:
-  - karma test
+  - karma start
   - npm run lint
   - npm run build:example
 after_script:
