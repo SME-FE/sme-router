@@ -1,0 +1,179 @@
+@import './normalize.scss';
+@import './constant.scss';
+
+
+html, body {
+  color: $blackText;
+  height: 100%;
+  background: url('./assets/bg.jpg')
+}
+
+#app {
+  height: 100%;
+  code {
+    background-color: $gray;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 1px 4px;
+    color: $deepGrayText;
+  }
+  .left {
+    float: left;
+    height: 100%;
+    width: 180px;
+    margin-right: 20px;
+    background-color: white;
+    border-left: 1px solid $gray;
+
+    .header {
+      text-align: center;
+      background-color: $purple;
+      color: white;
+      padding: 16px;
+      h3 {
+        margin-top: 0;
+      }
+      .menu-icon {
+        display: none;
+      }
+    }
+    
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      background-color: white;
+      li {
+        height: 30px;
+        line-height: 30px;
+        padding: 5px;
+        text-align: center;
+        cursor: pointer;
+        color: $purple;
+        &:hover {
+          color: $orange;
+        }
+      }
+    }
+  }
+
+  .right {
+    float: right;
+    height: 100%;
+    width: 300px;
+    margin-left: 20px;
+    background: url('./assets/Senjougahara.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .main {
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+    background: white;
+    padding: 30px 20px 10px 20px;
+    border: 1px solid $gray;
+    // box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    .sub-title {
+      padding-bottom: 16px;
+      div {
+        height: 20px;
+        line-height: 20px;
+        padding: 5px 0;
+      }
+      .route {
+        color: $purple;
+        font-weight: bold;
+      }
+      .desc {
+        color: $deepGrayText;
+      }
+    }
+    .example-box {
+      margin-top: 40px;
+      .example-head {
+        padding: 10px 0;
+        color: $purple;
+        font-weight: bold;
+      }
+      .mes {
+        margin: 16px 0;
+        padding: 10px;
+        border-left: 3px solid $purple;
+        background: $lightgray;
+      }
+    }
+  }
+
+  .fork-me-img {
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  #app {
+    .right {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #app {
+    .right, .fork-me-img {
+      display: none;
+    }
+    .left {
+      float: none;
+      height: 250px;
+      width: 100%;
+      border-left: none;
+      border-right: none;
+      .site-nav {
+        position: absolute;
+        z-index: 10;
+        top: 14px;
+        right: 8px;
+        border: 1px solid $purple;
+        background-color: white;
+        border-radius: 8px;
+        .menu-bar {
+          display: block;
+          font-weight: bold;
+          color: $purple;
+          font-size: 12px;
+          text-align: right;
+          height: 24px;
+          line-height: 24px;
+          padding: 5px;
+        }
+      }
+      ul {
+        display: none;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        background-color: white;
+        text-align: center;
+        li {
+          display: block;
+          cursor: pointer;
+          color: $purple;
+          &:hover {
+            color: $orange;
+          }
+        }
+      }
+    }
+    .main {
+      border-left: none;
+      border-right: none;
+    }
+  }
+}

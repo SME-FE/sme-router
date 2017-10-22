@@ -1,0 +1,23 @@
+<div class="content-container">
+  <h2 class="content-header">春</h2>
+  <div class="sub-title">
+    <div class="route">/spring/:year</div>
+    <div class="desc">简单例子，通过 <code>params</code>，<code>query</code>，<code>body</code> 传递参数</div>
+  </div>
+  <section>
+    <div>============================</div>
+    <div>params: ${JSON.stringify(params)}</div>
+    <div>query: ${JSON.stringify(query)}</div>
+    <div>body: ${JSON.stringify(body)}</div>
+    <div>============================</div>
+  </section>
+  <section class='example-box'>
+    <div class='example-head'># example</div>
+    <div>Current Day: <code>${params.year}-${query.month}-${query.day}</code></div>
+    <div class='mes'>${body ? `${body.mes}`: 'Default Mes: Hallo world ~~'}</div>
+  </section>
+</div>
+
+<section>
+  【亲爱的isak 现在我正坐在我们第一次见面的地方 想着你 马上就要到21:21了 我有千言万语要告诉你 我很抱歉吓到了你 我很抱歉伤害了你 我很抱歉没有告诉你我有躁郁症 我害怕失去你 我忘记了没有人会被失去 因为每个人都是孤独的 记住 在宇宙的另一个地方 我们永远的在一起 爱你 even】   
+</section>

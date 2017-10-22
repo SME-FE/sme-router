@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SME Router</title>
+</head>
+<body>
+  <div id="app">
+      <div class="left">
+          <div class="header">
+            <h3>sme-router</h3>
+            <em>A lightweight router lib that implement express route style</em>
+          </div>
+          <div class="site-nav">
+            <div class="menu-bar">
+              Menu
+            </div>
+            <ul class="menu-list">
+              <li onclick="router.go('/spring/1945?month=10&day=24', {mes: 'hallo world'})">春<em>(spring)</em></li>
+              <li onclick="router.go('/summer/1914?month=07&day=30')">霞<em>(summer)</em></li>
+              <li onclick="router.go('/autumn/1918?month=11&day=12')">秋<em>(autumn)</em></li>
+              <li onclick="router.go('/winter/1937?month=07&day=07')">霜<em>(winter)</em></li>
+              <li onclick="router.go('/about')">？<em>(about)</em></li>
+            </ul>
+          </div>
+      </div>
+      <div class="right">
+      </div>
+      <div class="main">
+        <div id="router-view"></div>
+      </div>
+      <a href="https://github.com/hwen" target="_blank">
+        <img class="fork-me-img" src="<%= require('./assets/fm.png')%>" alt="Fork me on Github">
+      </a>
+  </div>
+
+  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+  <script type="text/javascript" src="/<%=htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+  <% } %>
+  <!-- htmlWebpackPlugin 对象里究竟有什么？看下面的代码 -->
+  <!-- <script type="text/javascript">
+    var htmlPlugin = '<%= JSON.stringify(htmlWebpackPlugin) %>'
+  </script> -->
+</body>
+</html>

@@ -1,0 +1,20 @@
+@import './../../constant.scss';
+
+.sub-route-list {
+  margin: 24px 0 0;
+  span {
+    margin-right: 10px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 14px;
+    border: 1px solid $purple;
+    &:hover, &.active {
+      color: white;
+      background: $purple;
+    }
+  }
+}
