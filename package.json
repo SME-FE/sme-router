@@ -1,6 +1,6 @@
 {
   "name": "sme-router",
-  "version": "1.0.0",
+  "version": "0.12.1",
   "description": "A lightweight router lib that implement express route style",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,14 @@
     "sme",
     "SPA"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SME-FE/sme-router"
+  },
+  "bugs": {
+    "url": "https://github.com/SME-FE/sme-router/issues"
+  },
+  "homepage": "https://github.com/SME-FE/sme-router/issues#readme",
   "author": "hwen <hwenleung@gmail.com>",
   "license": "MIT",
   "dependencies": {
