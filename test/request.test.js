@@ -16,7 +16,6 @@
  * 转。。转 chai！！！太坑了
  */
 
-
 import SMERouter from '@/index'
 import chai from 'chai'
 import sinon from 'sinon'
@@ -24,11 +23,11 @@ import sinonChai from 'chai-sinon'
 chai.should()
 chai.use(sinonChai)
 
-describe('test single router & request object', function() {
+describe('test single router & request object', function () {
   this.timeout(2000) 
   
   const routePath = '/test/:sme'
-  const info = console.info
+  // const info = console.info
   const template = '<span>some conent</span>'
   const mountPoint = '<div id="route-view"></div>'
 
@@ -42,7 +41,7 @@ describe('test single router & request object', function() {
     sessionStorage.clear()
   })
 
-  //#region
+  // #region
   it('should be not match any routes', done => {
     let cc = sinon.spy()
     let router = new SMERouter('route-view')
@@ -72,9 +71,9 @@ describe('test single router & request object', function() {
 
     router.go('/test/something')
   })
-//#endregion
+  // #endregion
 
-//#region
+  // #region
   it('params.sme should be whattt', done => {
 
     let router = new SMERouter('route-view')
@@ -118,6 +117,5 @@ describe('test single router & request object', function() {
 
     router.go('/test/whattt', body)
   })
-  //#endregion
-
+  // #endregion
 })

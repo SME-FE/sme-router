@@ -79,7 +79,7 @@ npm run dev
 2.测试
 
 ```shell
-karma start
+npm run test // or => karma start
 ```
 
 3.lint

@@ -1,7 +1,7 @@
 {
   "name": "sme-router",
   "version": "0.12.1",
-  "description": "A lightweight router lib that implement express route style",
+  "description": "A lightweight router lib that implement with express route style",
   "main": "index.js",
   "scripts": {
     "test": "karma start",
@@ -25,11 +25,11 @@
   "bugs": {
     "url": "https://github.com/SME-FE/sme-router/issues"
   },
-  "homepage": "https://github.com/SME-FE/sme-router/issues#readme",
+  "homepage": "https://github.com/SME-FE/sme-router",
   "author": "hwen <hwenleung@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "path-to-regexp": "^2.0.0"
+    "path-to-regexp": "~2.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

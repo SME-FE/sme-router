@@ -2,7 +2,6 @@
  * 测试中间件
  */
 
-
 import SMERouter from '@/index'
 import chai from 'chai'
 import sinon from 'sinon'
@@ -10,9 +9,8 @@ import sinonChai from 'chai-sinon'
 chai.should()
 chai.use(sinonChai)
 
-describe('sme-router middlewares test', function() {
-  
-  const info = console.info
+describe('sme-router middlewares test', function () {
+  // const info = console.info
   const mountPoint = '<div id="route-view"></div>'
 
   document.body.insertAdjacentHTML(
@@ -25,7 +23,7 @@ describe('sme-router middlewares test', function() {
     sessionStorage.clear()
   })
 
-  //#region
+  // #region
   it('middlewares should be called in order', done => {
     let router = new SMERouter('route-view')
 
@@ -71,6 +69,5 @@ describe('sme-router middlewares test', function() {
     
     router.go('/test')
   })
-  //#endregion
-
+  // #endregion
 })

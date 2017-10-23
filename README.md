@@ -79,7 +79,7 @@ open http://localhost:8080/
 2.Test
 
 ```shell
-karma start
+npm run test // or => karma start
 ```
 
 3.lint

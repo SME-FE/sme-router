@@ -3,7 +3,6 @@
  * 只是用的是 hmlt5 的模式
  */
 
-
 import SMERouter from '@/index'
 import chai from 'chai'
 import sinon from 'sinon'
@@ -15,7 +14,7 @@ describe('sme-router test in html5 mode should get same result', function() {
   this.timeout(2000) 
   
   const routePath = '/test/:sme'
-  const info = console.info
+  // const info = console.info
   const template = '<span>some conent</span>'
   const mountPoint = '<div id="route-view"></div>'
 
@@ -29,7 +28,7 @@ describe('sme-router test in html5 mode should get same result', function() {
     sessionStorage.clear()
   })
 
-  //#region
+  // #region
   it('should be not match any routes', done => {
     let cc = sinon.spy()
     let router = new SMERouter('route-view', 'html5')
@@ -59,9 +58,9 @@ describe('sme-router test in html5 mode should get same result', function() {
 
     router.go('/test/something')
   })
-//#endregion
+// #endregion
 
-//#region
+// #region
   it('params.sme should be whattt', done => {
 
     let router = new SMERouter('route-view', 'html5')
@@ -105,6 +104,5 @@ describe('sme-router test in html5 mode should get same result', function() {
 
     router.go('/test/whattt', body)
   })
-  //#endregion
-
+  // #endregion
 })

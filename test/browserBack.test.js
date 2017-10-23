@@ -4,7 +4,6 @@
  * 行为也是一样的
  */
 
-
 import SMERouter from '@/index'
 import chai from 'chai'
 import sinon from 'sinon'
@@ -12,9 +11,8 @@ import sinonChai from 'chai-sinon'
 chai.should()
 chai.use(sinonChai)
 
-describe('sme-router test browser back', function() {
-  
-  const info = console.info
+describe('sme-router test browser back', function () {
+  // const info = console.info
   const mountPoint = '<div id="route-view"></div>'
 
   document.body.insertAdjacentHTML(
@@ -27,7 +25,7 @@ describe('sme-router test browser back', function() {
     sessionStorage.clear()
   })
 
-  //#region
+  // #region
   it('should not lost request.body data after history back', done => {
     let router = new SMERouter('route-view')
     let count = 0
@@ -92,6 +90,5 @@ describe('sme-router test browser back', function() {
     router.go('/index', { name: 'hwen' })
   })
 
-  //#endregion
-
+  // #endregion
 })

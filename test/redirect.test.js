@@ -2,7 +2,6 @@
  * 测试路由重定向
  */
 
-
 import SMERouter from '@/index'
 import chai from 'chai'
 import sinon from 'sinon'
@@ -10,10 +9,8 @@ import sinonChai from 'chai-sinon'
 chai.should()
 chai.use(sinonChai)
 
-describe('sme-router redirect test', function() {
-  
-  const info = console.info
-  const template = '<span>some conent</span>'
+describe('sme-router redirect test', function () {
+  // const info = console.info
   const mountPoint = '<div id="route-view"></div>'
 
   document.body.insertAdjacentHTML(
@@ -26,7 +23,7 @@ describe('sme-router redirect test', function() {
     sessionStorage.clear()
   })
 
-  //#region
+  // #region
   it('path: /other, before and after hook should be called once', done => {
     let preHook = sinon.spy()
     let postHook = sinon.spy()
@@ -76,6 +73,5 @@ describe('sme-router redirect test', function() {
     
     router.go('/index')
   })
-  //#endregion
-
+  // #endregion
 })
