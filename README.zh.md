@@ -7,7 +7,7 @@
 
 ## 文档
 
-- [文档](https://github.com/SME-FE/sme-router/blob/master/docs/document.md)
+- [文档](https://github.com/SME-FE/sme-router/blob/master/docs/document.zh.md)
 - [API](https://github.com/SME-FE/sme-router/blob/master/docs/api.md)
 
 ## Get Start
