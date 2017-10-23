@@ -3,7 +3,7 @@
 A lightweight router lib that implement with express route style
 
 ![Travis branch](https://img.shields.io/travis/SME-FE/sme-router/master.svg?style=flat-square)
-[![Coverage Status](https://coveralls.io/repos/github/SME-FE/sme-router/badge.svg?branch=master)](https://coveralls.io/github/SME-FE/sme-router?branch=master)
+![coverage](https://img.shields.io/coveralls/github/SME-FE/sme-router/master.svg?style=flat-square)
 ![download](https://img.shields.io/npm/dm/sme-router.svg?style=flat-square)
 ![version](https://img.shields.io/npm/v/sme-router.svg?style=flat-square)
 ![license](https://img.shields.io/badge/license-mit-green.svg?style=flat-square)
