@@ -69,6 +69,8 @@ router.route('*', (req, res, next) => {
 <script type="text/javascript" src="sme-router.min.js"></script>
 ```
 
+Please see the [document](https://github.com/SME-FE/sme-router/blob/master/docs/document.md) for more details
+
 ## Live demo
 
 [click me to see the demo](https://sme-fe.github.io/sme-router/)

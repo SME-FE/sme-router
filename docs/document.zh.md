@@ -21,6 +21,8 @@ SME Router 是仿照 express 的风格编写的，前端路由库。所以 api �
 
 跟 express 一样，在 SME Router 中，路由和中间件注册的顺序也是非常重要的。先注册的路由会先匹配，先注册的中间件也会先执行。
 
+PS.下面的例子都是用 hash mode 写的。想改成 html5 history 模式，需要 `new SMERouter('router-view', 'html5')`。改成 html5 模式后，需要服务器支持。具体配置见 [vue-router 后端配置例子](https://router.vuejs.org/zh-cn/essentials/history-mode.html)
+
 ```js
 import SMERouter from 'sme-router'
 
@@ -50,7 +52,7 @@ router.go('/user/123?name=hwen', { mes: 'hallo world'})
 
 使用前，你应该安装 `pug-loader` 或 `handlebars-loader`
 
-1.using pug
+1.using pug [#demo](https://sme-fe.github.io/sme-router/#/autumn/1918?month=11&day=12&type=pug)
 
 因为 pug-loader 在 webpack3 使用有 bug（2017-10-22），所以你应该安装`"pug-loader": "~2.2.1"`.
 并在 loader 的配置后面加上 `?`，不然还是会报错
@@ -76,7 +78,7 @@ export default function autumn (req, res, next) {
 }
 ```
 
-2.using handlebars
+2.using handlebars [#demo](https://sme-fe.github.io/sme-router/#/autumn/1918?month=11&day=12&type=hbs)
 
 webpack config
 

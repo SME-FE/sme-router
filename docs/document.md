@@ -21,6 +21,8 @@ SME Router is written with express style, api look like express.
 
 The same as express the order of registering route and middlewares is important.The order in which you define route or middleware with `router.route()` or `router.use()` is very important. They are invoked sequentially, thus the order defines route and middleware precedence
 
+By the way, the following code is written in hash mode, you can change it to html5 history mode by `new SMERouter('router-view', 'html5')`. When using html5 mode, remember to configure your server setting. see [vue-router Example Server Configurations](https://router.vuejs.org/en/essentials/history-mode.html) for more details.
+
 ```js
 import SMERouter from 'sme-router'
 
@@ -50,7 +52,7 @@ You can get the complete webpack config of the example blow from [here](https://
 
 may be you should install `pug-loader` or `handlebars-loader` first
 
-1.using pug
+1.using pug [#demo](https://sme-fe.github.io/sme-router/#/autumn/1918?month=11&day=12&type=pug)
 
 I think there is a bug with pug-loader in webpack3(2017-10-22), so you may better to install `"pug-loader": "~2.2.1"`， and config the loader with `?` before `pug-loader` fix this bug
 
@@ -75,7 +77,7 @@ export default function autumn (req, res, next) {
 }
 ```
 
-2.using handlebars
+2.using handlebars [#demo](https://sme-fe.github.io/sme-router/#/autumn/1918?month=11&day=12&type=hbs)
 
 webpack config
 

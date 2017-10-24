@@ -1,6 +1,7 @@
 
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   devtool: 'source-map',
@@ -16,11 +17,10 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -51,16 +51,17 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: 'example.js'
+    filename: 'example.js',
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'sme-router exmaple',
       showErrors: true,
       // 具体参考：https://github.com/jantimon/html-webpack-plugin/blob/master/docs/template-option.md
-      inject: false,
+      inject: true,
       template: path.resolve(__dirname, '../example/index.html')
-    })
+    }),
+    new ExtractTextPlugin('style.css')
   ],
   resolve: {
     alias: {

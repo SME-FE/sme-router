@@ -5,7 +5,12 @@ import { summer, morn, nightfall } from './pages/summer'
 import autumn from './pages/autumn'
 import winter from './pages/winter'
 
-const router = new SMERouter('router-view')
+let router = null
+if (process.env.NODE_ENV === 'gh') {
+  router = new SMERouter('router-view')
+} else {
+  router = new SMERouter('router-view', 'html5')
+}
 
 // route config
 router.route('/spring/:year', spring)

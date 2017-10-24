@@ -48,7 +48,7 @@ describe('sme-router test in html5 mode should get same result', function() {
     router.route(routePath, (req, res, next) => {
       res.render(template)
       
-      let content = '';
+      let content = ''
 
       content = document.getElementById('route-view').innerHTML
       content.should.equal(template)
@@ -58,9 +58,9 @@ describe('sme-router test in html5 mode should get same result', function() {
 
     router.go('/test/something')
   })
-// #endregion
+  // #endregion
 
-// #region
+  // #region
   it('params.sme should be whattt', done => {
 
     let router = new SMERouter('route-view', 'html5')

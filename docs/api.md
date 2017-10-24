@@ -1,6 +1,15 @@
 
 # router
 
+## constructor
+
+new SMERouter(domId, mode)
+
+#### Parameters
+
+- {String} `domId`: mount point id
+- {String} `mode`: 'hash' or 'html5', if missing this parameter the default mode is 'hash' mode
+
 ## router.route(path, handler)
 
 #### Parameters
