@@ -6,21 +6,17 @@ import HashHistory from '@/history/HashHistory'
 export default class Router {
   constructor (mount, mode = 'hash') {
     this._mount = document.getElementById(mount)
-    this._subRouteView = '<div id="__sub-route-view"></div>'
-    this._subMount = null
-    this._isPassing = false
-
-    this._cache = {}
-    this._middlewares = []
-
     if (!this._mount) {
       throw new Error(`Can not get mount point document.getElementById(#${mount})...`)
     }
 
+    this._subRouteView = '<div id="__sub-route-view"></div>'
+    this._subMount = null
+    this._isPassing = false
+    this._cache = {}
+    this._middlewares = []
     this._matcher = new RouteMatcher()
 
-    this.iterator = false
-    console.log(`router mode is ${mode}`)
     this._history = mode === 'hash'
       ? new HashHistory({ matcher: this._matcher })
       : new Html5History({ matcher: this._matcher })
