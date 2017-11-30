@@ -54,7 +54,6 @@ describe('sme-router test browser back', function () {
     router.route('/other', () => {
       router.back() // same as window.history.go(-1)
     })
-    
     router.go('/index', { name: 'hwen' })
   })
 
@@ -86,7 +85,6 @@ describe('sme-router test browser back', function () {
     router.route('/other', () => {
       router.back() // same as window.history.go(-1)
     })
-    
     router.go('/index', { name: 'hwen' })
   })
 

@@ -41,7 +41,6 @@ describe('sme-router middlewares test', function () {
       router.stop()
       done()
     })
-    
     router.go('/index?count=1')
   })
 
@@ -66,7 +65,6 @@ describe('sme-router middlewares test', function () {
     router.route('*', (req, res, next) => {
       res.redirect('/index?count=2')
     })
-    
     router.go('/test')
   })
   // #endregion

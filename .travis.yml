@@ -16,7 +16,7 @@ script:
   - npm run lint
   - npm run build:gh
 after_script:
-  - cat ./test/coverage/report-lcovonly.txt | coveralls
+  - cat ./dist/coverage/report-lcovonly.txt | coveralls
   - cd dist
   - git init
   - git config user.name "hwen"

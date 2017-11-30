@@ -10,9 +10,9 @@ import sinonChai from 'chai-sinon'
 chai.should()
 chai.use(sinonChai)
 
-describe('sme-router test in html5 mode should get same result', function() {
-  this.timeout(2000) 
-  
+describe('sme-router test in html5 mode should get same result', function () {
+  this.timeout(2000)
+
   const routePath = '/test/:sme'
   // const info = console.info
   const template = '<span>some conent</span>'
@@ -33,7 +33,7 @@ describe('sme-router test in html5 mode should get same result', function() {
     let cc = sinon.spy()
     let router = new SMERouter('route-view', 'html5')
     router.route(routePath, cc)
-    
+
     router.go('/test-other')
 
     setTimeout(() => {
@@ -47,7 +47,7 @@ describe('sme-router test in html5 mode should get same result', function() {
     let router = new SMERouter('route-view', 'html5')
     router.route(routePath, (req, res, next) => {
       res.render(template)
-      
+
       let content = ''
 
       content = document.getElementById('route-view').innerHTML
@@ -62,7 +62,6 @@ describe('sme-router test in html5 mode should get same result', function() {
 
   // #region
   it('params.sme should be whattt', done => {
-
     let router = new SMERouter('route-view', 'html5')
     router.route(routePath, (req) => {
       req.params.sme.should.be.equal('whattt')

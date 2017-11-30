@@ -61,7 +61,7 @@ describe('test single router & request object', function () {
     router.route(routePath, (req, res, next) => {
       res.render(template)
       
-      let content = '';
+      let content = ''
 
       content = document.getElementById('route-view').innerHTML
       content.should.equal(template)
@@ -75,7 +75,6 @@ describe('test single router & request object', function () {
 
   // #region
   it('params.sme should be whattt', done => {
-
     let router = new SMERouter('route-view')
     router.route(routePath, (req) => {
       req.params.sme.should.be.equal('whattt')

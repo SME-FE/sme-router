@@ -40,7 +40,7 @@ module.exports = function (config) {
     },
     coverageReporter: {
       // specify a common output directory
-      dir: 'test/coverage/',
+      dir: 'dist/coverage/',
       reporters: [
         // reporters not supporting the `file` property
         { type: 'html', subdir: 'report-html' },

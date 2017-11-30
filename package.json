@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start",
-    "lint": "eslint --ext .js src example build",
+    "lint": "eslint --ext .js src example build test",
     "build": "webpack --config ./build/webpack.prod.config.js",
     "build:example": "webpack --config ./build/webpack.example.config.js",
     "build:gh": "webpack --config ./build/webpack.gh-pages.config.js",
