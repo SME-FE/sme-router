@@ -66,7 +66,7 @@ router.route('*', (req, res, next) => {
 **注意:** 如果你的项目没有使用 webpack 等构建工具，你可以通过 html 引入
 
 ```html
-<script type="text/javascript" src="sme-router.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/sme-router"></script>
 ```
 
 具体用法请见 [文档](https://github.com/SME-FE/sme-router/blob/master/docs/document.zh.md)

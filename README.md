@@ -66,7 +66,7 @@ router.route('*', (req, res, next) => {
 **Note:** if your are not using webpack, your can simply import it to your html file
 
 ```html
-<script type="text/javascript" src="sme-router.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/sme-router"></script>
 ```
 
 Please see the [document](https://github.com/SME-FE/sme-router/blob/master/docs/document.md) for more details
