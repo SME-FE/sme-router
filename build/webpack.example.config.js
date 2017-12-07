@@ -2,6 +2,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   devtool: 'source-map',
@@ -61,7 +62,8 @@ module.exports = {
       inject: true,
       template: path.resolve(__dirname, '../example/index.html')
     }),
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('style.css'),
+    new UglifyJSPlugin()
   ],
   resolve: {
     alias: {
