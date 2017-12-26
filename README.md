@@ -28,6 +28,8 @@ npm i --save sme-router
 
 ### Usage
 
+[![Edit sme-router example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/5w4q410wjn)
+
 index.html
 
 ```html
