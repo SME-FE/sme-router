@@ -100,6 +100,15 @@ npm run test // or => karma start
 npm run lint
 ```
 
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+| [<img src="https://avatars3.githubusercontent.com/u/6712767?v=4" width="100px;"/><br /><sub>hwen</sub>](https://github.com/hwen)<br />[🤔](#ideas "Ideas & Planning") [💻](https://github.com/SME-FE/sme-router/commits?author=hwen "Code") [🎨](#design "Design") [📖](https://github.com/SME-FE/sme-router/commits?author=hwen "Documentation") [💡](#example "Examples") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT)
