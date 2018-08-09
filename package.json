@@ -1,6 +1,6 @@
 {
   "name": "sme-router",
-  "version": "0.12.6",
+  "version": "0.12.7",
   "description": "A lightweight router lib that implement with express route style",
   "main": "index.js",
   "scripts": {
