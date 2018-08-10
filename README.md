@@ -10,13 +10,12 @@ A lightweight router lib that implement with express route style
 
 ## Languages
 
-- [中文](https://github.com/SME-FE/sme-router/blob/master/README.zh.md)
-- [English](https://github.com/SME-FE/sme-router/blob/master/README.md)
+- [中文](https://sme-fe.github.io/website-router/zh/)
+- [English](https://sme-fe.github.io/website-router/)
 
 ## Documentation
 
-- [Doc](https://github.com/SME-FE/sme-router/blob/master/docs/document.md)
-- [API](https://github.com/SME-FE/sme-router/blob/master/docs/api.md)
+- [Doc](https://sme-fe.github.io/website-router/)
 
 ## Get Start
 
