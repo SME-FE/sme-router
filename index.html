@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- 分享显示的标题-->
+  <meta itemprop="name" content="分享的标题" />
+  
+  <!-- 分享显示的缩略图-->
+  <meta itemprop="image" content="https://raw.githubusercontent.com/SME-FE/sme-router/master/example/assets/Senjougahara.jpg" />
+  
+  <!-- 分享显示的简介-->
+  <meta itemprop="description" content="这里是描述描述" />  
+  <title>SME Router</title>
+<link href="/sme-router/style.css" rel="stylesheet"></head>
+<body>
+  <div id="app">
+      <div class="left">
+          <div class="header">
+            <h3>sme-router</h3>
+            <em>A lightweight router lib that implement with express route style</em>
+          </div>
+          <div class="site-nav">
+            <div class="menu-bar">
+              Menu
+            </div>
+            <ul class="menu-list">
+              <li onclick="router.go('/spring/1945?month=10&day=24', {mes: 'hallo world'})">春<em>(spring)</em></li>
+              <li onclick="router.go('/summer/1914?month=07&day=30')">霞<em>(summer)</em></li>
+              <li onclick="router.go('/autumn/1918?month=11&day=12')">秋<em>(autumn)</em></li>
+              <li onclick="router.go('/winter/1937?month=07&day=07')">霜<em>(winter)</em></li>
+            </ul>
+          </div>
+      </div>
+      <div class="right">
+      </div>
+      <div class="main">
+        <div id="router-view"></div>
+      </div>
+      <a href="https://github.com/SME-FE/sme-router/tree/master" target="_blank">
+        <img class="fork-me-img" src="/sme-router/ebc1c17d1a961807cbb742c957d928ff.png" alt="Fork me on Github">
+      </a>
+  </div>
+<script type="text/javascript" src="/sme-router/example.js"></script></body>
+</html>
